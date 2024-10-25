@@ -2,9 +2,12 @@ GadgetGalaxy - E-Commerce Platform Backend Documentation
 
 Table of Contents
 ----------------
-1)Prerequisites
+1)Prerequisites 
+
 2)Installation
+
 3)Environment Variables
+
 4)Running the Application
 
 
@@ -42,5 +45,5 @@ JWT_REFRESH_SECRET_KEY=''
 
 4)  Running the Application
 
-To start the server, run the following command:
+To start the server, run the following command : 
 npm run dev
