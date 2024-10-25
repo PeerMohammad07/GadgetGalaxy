@@ -43,6 +43,8 @@ MONGO_DB_URL=''
 JWT_SECRET_KEY=''
 JWT_REFRESH_SECRET_KEY=''
 
+--------------------------
+
 4)  Running the Application
 
 To start the server, run the following command : 
