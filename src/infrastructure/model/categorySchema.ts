@@ -1,7 +1,8 @@
-const mongoose = require('mongoose')
+import mongoose, { Schema } from "mongoose";
+import { ICategory } from "../../interfaces/Category/ICategory";
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const categorySchema = mongoose.Schema({
+const categorySchema = new Schema({
     name:{
       type:String,
       required:true
@@ -12,4 +13,5 @@ const categorySchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('category',categorySchema)
+const Category = mongoose.model<ICategory>("category",categorySchema)
+export default Category

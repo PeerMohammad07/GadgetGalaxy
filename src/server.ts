@@ -4,11 +4,15 @@ import userRouter from "./infrastructure/routes/userRoutes";
 import connectDB from "./infrastructure/config/db";
 import cors from "cors"
 import morgan from "morgan";
+import adminRouter from "./infrastructure/routes/adminRoutes";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 // Config the Dotenv
 dotenv.config()
+
+app.use(cookieParser())
 
 // Setting Cors 
 app.use(cors({
@@ -26,7 +30,7 @@ app.use(express.json());
 connectDB()
 
 app.use("/api/user",userRouter)
-
+app.use("/api/admin",adminRouter)
 
 const PORT = process.env.PORT || 3000
 
