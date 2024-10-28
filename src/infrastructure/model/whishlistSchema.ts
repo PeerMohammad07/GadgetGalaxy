@@ -8,11 +8,15 @@ const whishlistSchema = new Schema({
     ref: 'user',
     required: true
   },
-  productId :{
-    type:ObjectId,
-    ref:'product',
-    required:true
-  }
+  products: [
+    {
+      productId: {
+        type: ObjectId,
+        ref: 'products',
+        required: true
+      }
+    }
+  ]
 })
 
 const WhishlistSchema = mongoose.model<IWishlist>("whishlist",whishlistSchema)

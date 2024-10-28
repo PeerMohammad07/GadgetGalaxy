@@ -1,6 +1,5 @@
 import { Types } from "mongoose";
 import { IProduct } from "../interfaces/Product/IProduct";
-
 import cloudinary from "../infrastructure/utils/cloudinary";
 import fs from "fs"
 import { IProductUseCase } from "../interfaces/Product/IProductUseCase";
@@ -14,13 +13,11 @@ export class ProductUseCase implements IProductUseCase {
     this.productRepository = productRepository;
   }
 
-  // Get all products
   async getAllProducts(): Promise<IProduct[]> {
     return await this.productRepository.getAllProducts()
   }
 
-  // Add a product
-  async addProduct(productData: IProduct): Promise<IProduct|undefined> {
+  async addProduct(productData: IProduct): Promise<any> {
     try {
       const fileImage = await cloudinary.uploader.upload(productData.image.path,{
         folder : "GadgetGalaxy"
@@ -36,12 +33,10 @@ export class ProductUseCase implements IProductUseCase {
     }
   }
 
-  // // Edit a product
-  // async editProduct(productId: Types.ObjectId, updateData: Partial<IProduct>): Promise<IProduct | null> {
-    
-  // }
+  async editProduct(productId: Types.ObjectId, updateData: Partial<IProduct>): Promise<any | null> {
+      return await this.productRepository.editProduct(productId,updateData)
+  }
 
-  // Delete a product
   async deleteProduct(productId: Types.ObjectId): Promise<IProduct | null> {
     return await this.productRepository.deleteProduct(productId);
   }

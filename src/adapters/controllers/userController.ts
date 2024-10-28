@@ -1,4 +1,4 @@
-import { Request, Response } from "express"
+import { Request, response, Response } from "express"
 import IUserUseCase from "../../interfaces/User/IUserUseCase"
 import { HttpStatusEnum } from "../../statusCodeEnum"
 
@@ -104,6 +104,18 @@ export default class UserController {
     } catch (error: any) {
       res.status(HttpStatusEnum.INTERNAL_SERVER_ERROR).json({
         message: `Error placing order: ${error.message}`
+      });
+    }
+  }
+
+  async getOrders(req: Request, res: Response): Promise<void>{
+    try {
+      const userId = req.params.userId
+      const response = await this.userUseCase.getAllOrders(userId)
+      res.status(HttpStatusEnum.OK).json(response)
+    } catch (error:any) {
+      res.status(HttpStatusEnum.INTERNAL_SERVER_ERROR).json({
+        message: `Error getting order: ${error.message}`
       });
     }
   }

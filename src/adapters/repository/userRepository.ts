@@ -47,6 +47,10 @@ class userRepository implements IUserRepository {
     const order = await new this.order(orderDetails)
     return await order.save()
   }
+
+  async getAllOrders(userId:string){
+    return await this.order.find({userId:userId})
+  }
 }
 
 export default userRepository

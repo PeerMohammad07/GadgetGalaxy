@@ -8,4 +8,5 @@ export default interface IUserRepository {
   getAllUser():Promise<IUserData[]>
   addAddress(userId: string, addressData: any): Promise<any | null>
   saveOrder(orderDetails:any):Promise<any>
+  getAllOrders(userId:string):Promise<any>
 } 

@@ -11,7 +11,6 @@ export class ProductController implements IProductController {
     this.productUseCase = productUseCase;
   }
 
-  // Get all products
   async getAllProducts(req: Request, res: Response): Promise<void> {
     try {
       const products = await this.productUseCase.getAllProducts();
@@ -21,7 +20,6 @@ export class ProductController implements IProductController {
     }
   }
 
-  // Add a product
   async addProduct(req: Request, res: Response): Promise<void> {
     try {
       const image:any = req.file
@@ -34,23 +32,22 @@ export class ProductController implements IProductController {
     }
   }
 
-  // Edit a product
   async editProduct(req: Request, res: Response): Promise<void> {
     try {
       const productId = req.params.id as unknown as Types.ObjectId;
       const updateData = req.body;
-      // const updatedProduct = await this.productUseCase.editProduct(productId, updateData);
-      // if (updatedProduct) {
-      //   res.status(HttpStatusEnum.OK).json(updatedProduct);
-      // } else {
-      //   res.status(HttpStatusEnum.NOT_FOUND).json({ message: "Product not found" });
-      // }
+      console.log(updateData,productId)
+      const updatedProduct = await this.productUseCase.editProduct(productId, updateData.data);
+      if (updatedProduct) {
+        res.status(HttpStatusEnum.OK).json(updatedProduct);
+      } else {
+        res.status(HttpStatusEnum.NOT_FOUND).json({ message: "Product not found" });
+      }
     } catch (error: any) {
       res.status(HttpStatusEnum.INTERNAL_SERVER_ERROR).json({ message: `Error updating product: ${error.message}` });
     }
   }
 
-  // Delete a product
   async deleteProduct(req: Request, res: Response): Promise<void> {
     try {
       const productId = req.params.id as unknown as Types.ObjectId;

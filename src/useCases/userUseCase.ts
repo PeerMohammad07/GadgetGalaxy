@@ -136,4 +136,8 @@ export default class userUseCase implements IUserUseCase {
       return { status: false, message: "An error occurred while placing the order." };
     }
   }
+
+  async getAllOrders(userId:string){
+    return this.userRepository.getAllOrders(userId)
+  }
 }

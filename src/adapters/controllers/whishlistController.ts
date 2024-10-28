@@ -30,6 +30,7 @@ export class WishlistController {
       const productId = req.body.productId as Types.ObjectId;
 
       const result:any = await this.wishlistUseCase.addToWishlist(userId, productId);
+      console.log(result,"brooo")
       if (result.status) {
         res.status(result.status).json({ message: result.message });
       } else {
@@ -52,6 +53,7 @@ export class WishlistController {
         res.status(HttpStatusEnum.OK).json(result);
       }
     } catch (error: any) {
+      console.log(error)
       res.status(HttpStatusEnum.INTERNAL_SERVER_ERROR).json({ message: `Error removing product from wishlist: ${error.message}` });
     }
   }

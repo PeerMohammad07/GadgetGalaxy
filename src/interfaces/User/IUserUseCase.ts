@@ -12,4 +12,5 @@ export default interface IUserUseCase{
   login(email:string,password:string):Promise<IReturnMessage>
   getAllUsers():Promise<IUserData[]>
   placeOrder(orderDetails:any):Promise<any>
+  getAllOrders(userId:string):Promise<any>
 }

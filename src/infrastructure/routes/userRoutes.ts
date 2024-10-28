@@ -49,8 +49,13 @@ userRouter.post("/cart/:userId",userAuth, cartController.addToCart.bind(cartCont
 userRouter.patch("/productQuantity",userAuth,cartController.updateQuantity.bind(cartController))
 userRouter.delete("/removeFromCart/:cartId/:productId", userAuth,cartController.removeFromCart.bind(cartController));
 
+userRouter.get("/orders/:userId",userAuth,userController.getOrders.bind(userController))
 userRouter.post("/placeOrder",userAuth,userController.placeOrder.bind(userController))
 userRouter.post("/address/:userId", userAuth, userController.addAddress.bind(userController));
+
+userRouter.get("/test",(req,res)=>{
+  res.send({message : "successfully hosted"})
+})
 userRouter.post('/register',userController.register)
 userRouter.post('/login',userController.login)
 userRouter.post('/logout',userController.logout)
