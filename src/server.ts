@@ -16,7 +16,7 @@ app.use(cookieParser())
 
 // Setting Cors 
 app.use(cors({
-  origin: "https://gadget-galaxy-frontend-lovat.vercel.app",
+  origin: "*",
   credentials: true,
 }));
 

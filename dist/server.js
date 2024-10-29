@@ -17,7 +17,7 @@ dotenv_1.default.config();
 app.use((0, cookie_parser_1.default)());
 // Setting Cors 
 app.use((0, cors_1.default)({
-    origin: "https://gadget-galaxy-frontend-lovat.vercel.app",
+    origin: "*",
     credentials: true,
 }));
 // Use morgan middleware to log HTTP requests
@@ -25,7 +25,6 @@ app.use((0, morgan_1.default)("dev"));
 // For parsing application/json
 app.use(express_1.default.json());
 // Mongodb Connect
-
 (0, db_1.default)();
 app.use("/api/user", userRoutes_1.default);
 app.use("/api/admin", adminRoutes_1.default);
