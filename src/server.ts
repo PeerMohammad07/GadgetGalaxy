@@ -20,6 +20,7 @@ app.use(cors({
   credentials: true,
 }));
 
+app.options('*', cors());
 
 
 // Use morgan middleware to log HTTP requests
