@@ -17,7 +17,7 @@ dotenv_1.default.config();
 app.use((0, cookie_parser_1.default)());
 // Setting Cors 
 app.use((0, cors_1.default)({
-    origin: ["https://gadget-galaxy-peermohammadwebsite.vercel.app", "http://localhost:5173"],
+    origin: ["https://gadget-galaxy-peermohammadwebsite.vercel.app"],
     credentials: true,
 }));
 // Use morgan middleware to log HTTP requests

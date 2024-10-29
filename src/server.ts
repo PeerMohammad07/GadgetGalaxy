@@ -16,7 +16,7 @@ app.use(cookieParser())
 
 // Setting Cors 
 app.use(cors({
-  origin: ["https://gadget-galaxy-peermohammadwebsite.vercel.app","http://localhost:5173"],
+  origin: ["https://gadget-galaxy-peermohammadwebsite.vercel.app"],
   credentials: true,
 }));
 
