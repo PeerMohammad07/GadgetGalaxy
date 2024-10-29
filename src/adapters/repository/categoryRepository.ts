@@ -1,6 +1,6 @@
 import { Model, Types } from "mongoose";
-import { ICategory } from "../../interfaces/Category/ICategory";
 import { ICategoryRepository } from "../../interfaces/Category/ICategoryRepository";
+import { ICategory } from "../../interfaces/Category/ICategory";
 
 export class CategoryRepository implements ICategoryRepository {
   private categoryModel: Model<ICategory>;

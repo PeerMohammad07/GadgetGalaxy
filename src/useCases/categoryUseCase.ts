@@ -15,15 +15,15 @@ export class CategoryUseCase implements ICategoryUseCase {
     return await this.categoryRepository.getAllCategories()
   }
 
-  async addCategory(categoryData: ICategoryData): Promise<ICategoryData> {
+  async addCategory(categoryData: ICategoryData): Promise<any> {
     return await this.categoryRepository.addCategory(categoryData);
   }
 
-  async editCategory(categoryId: Types.ObjectId, updateData: Partial<ICategoryData>): Promise<ICategoryData | null> {
+  async editCategory(categoryId: Types.ObjectId, updateData: Partial<any>): Promise<any> {
     return await this.categoryRepository.editCategory(categoryId, updateData);
   }
 
-  async deleteCategory(categoryId: Types.ObjectId): Promise<ICategoryData | null> {
+  async deleteCategory(categoryId: Types.ObjectId): Promise<any> {
     return await this.categoryRepository.deleteCategory(categoryId);
   }
 }
