@@ -9,7 +9,7 @@ import { CartRepository } from "../../adapters/repository/cartRepository"
 import { CartUseCase } from "../../useCases/cartUseCase"
 import { CartController } from "../../adapters/controllers/cartController"
 import Cart from "../model/cartSchema"
-import userAuth from "../middlewares/userAuth"
+// import userAuth from "../middlewares/userAuth"
 import { WishlistRepository } from "../../adapters/repository/whishlistRepository"
 import WhishlistSchema from "../model/whishlistSchema"
 import { WishlistUseCase } from "../../useCases/whishlistUseCase"
@@ -39,19 +39,19 @@ const wishlistUseCase = new WishlistUseCase(wishlistRepository);
 const wishlistController = new WishlistController(wishlistUseCase);
 
 // Routes
-userRouter.get("/wishlist/:userId", userAuth, wishlistController.getWishlist.bind(wishlistController));
-userRouter.post("/wishlist/:userId", userAuth, wishlistController.addToWishlist.bind(wishlistController));
-userRouter.delete("/wishlist/:userId/:productId", userAuth, wishlistController.removeFromWishlist.bind(wishlistController));
+userRouter.get("/wishlist/:userId", wishlistController.getWishlist.bind(wishlistController));
+userRouter.post("/wishlist/:userId", wishlistController.addToWishlist.bind(wishlistController));
+userRouter.delete("/wishlist/:userId/:productId", wishlistController.removeFromWishlist.bind(wishlistController));
 
 
-userRouter.get("/cart/:userId",userAuth, cartController.getCart.bind(cartController));
-userRouter.post("/cart/:userId",userAuth, cartController.addToCart.bind(cartController));
-userRouter.patch("/productQuantity",userAuth,cartController.updateQuantity.bind(cartController))
-userRouter.delete("/removeFromCart/:cartId/:productId", userAuth,cartController.removeFromCart.bind(cartController));
+userRouter.get("/cart/:userId", cartController.getCart.bind(cartController));
+userRouter.post("/cart/:userId", cartController.addToCart.bind(cartController));
+userRouter.patch("/productQuantity",cartController.updateQuantity.bind(cartController))
+userRouter.delete("/removeFromCart/:cartId/:productId",cartController.removeFromCart.bind(cartController));
 
-userRouter.get("/orders/:userId",userAuth,userController.getOrders.bind(userController))
-userRouter.post("/placeOrder",userAuth,userController.placeOrder.bind(userController))
-userRouter.post("/address/:userId", userAuth, userController.addAddress.bind(userController));
+userRouter.get("/orders/:userId",userController.getOrders.bind(userController))
+userRouter.post("/placeOrder",userController.placeOrder.bind(userController))
+userRouter.post("/address/:userId", userController.addAddress.bind(userController));
 
 userRouter.get("/test",(req,res)=>{
   res.send({message : "successfully hosted"})

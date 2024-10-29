@@ -14,7 +14,7 @@ const cartRepository_1 = require("../../adapters/repository/cartRepository");
 const cartUseCase_1 = require("../../useCases/cartUseCase");
 const cartController_1 = require("../../adapters/controllers/cartController");
 const cartSchema_1 = __importDefault(require("../model/cartSchema"));
-const userAuth_1 = __importDefault(require("../middlewares/userAuth"));
+// import userAuth from "../middlewares/userAuth"
 const whishlistRepository_1 = require("../../adapters/repository/whishlistRepository");
 const whishlistSchema_1 = __importDefault(require("../model/whishlistSchema"));
 const whishlistUseCase_1 = require("../../useCases/whishlistUseCase");
@@ -36,16 +36,16 @@ const wishlistRepository = new whishlistRepository_1.WishlistRepository(whishlis
 const wishlistUseCase = new whishlistUseCase_1.WishlistUseCase(wishlistRepository);
 const wishlistController = new whishlistController_1.WishlistController(wishlistUseCase);
 // Routes
-userRouter.get("/wishlist/:userId", userAuth_1.default, wishlistController.getWishlist.bind(wishlistController));
-userRouter.post("/wishlist/:userId", userAuth_1.default, wishlistController.addToWishlist.bind(wishlistController));
-userRouter.delete("/wishlist/:userId/:productId", userAuth_1.default, wishlistController.removeFromWishlist.bind(wishlistController));
-userRouter.get("/cart/:userId", userAuth_1.default, cartController.getCart.bind(cartController));
-userRouter.post("/cart/:userId", userAuth_1.default, cartController.addToCart.bind(cartController));
-userRouter.patch("/productQuantity", userAuth_1.default, cartController.updateQuantity.bind(cartController));
-userRouter.delete("/removeFromCart/:cartId/:productId", userAuth_1.default, cartController.removeFromCart.bind(cartController));
-userRouter.get("/orders/:userId", userAuth_1.default, userController.getOrders.bind(userController));
-userRouter.post("/placeOrder", userAuth_1.default, userController.placeOrder.bind(userController));
-userRouter.post("/address/:userId", userAuth_1.default, userController.addAddress.bind(userController));
+userRouter.get("/wishlist/:userId", wishlistController.getWishlist.bind(wishlistController));
+userRouter.post("/wishlist/:userId", wishlistController.addToWishlist.bind(wishlistController));
+userRouter.delete("/wishlist/:userId/:productId", wishlistController.removeFromWishlist.bind(wishlistController));
+userRouter.get("/cart/:userId", cartController.getCart.bind(cartController));
+userRouter.post("/cart/:userId", cartController.addToCart.bind(cartController));
+userRouter.patch("/productQuantity", cartController.updateQuantity.bind(cartController));
+userRouter.delete("/removeFromCart/:cartId/:productId", cartController.removeFromCart.bind(cartController));
+userRouter.get("/orders/:userId", userController.getOrders.bind(userController));
+userRouter.post("/placeOrder", userController.placeOrder.bind(userController));
+userRouter.post("/address/:userId", userController.addAddress.bind(userController));
 userRouter.get("/test", (req, res) => {
     res.send({ message: "successfully hosted" });
 });
