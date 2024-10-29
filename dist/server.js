@@ -25,6 +25,7 @@ app.use((0, morgan_1.default)("dev"));
 // For parsing application/json
 app.use(express_1.default.json());
 // Mongodb Connect
+
 (0, db_1.default)();
 app.use("/api/user", userRoutes_1.default);
 app.use("/api/admin", adminRoutes_1.default);
