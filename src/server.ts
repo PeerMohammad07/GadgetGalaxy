@@ -16,9 +16,10 @@ app.use(cookieParser())
 
 // Setting Cors 
 app.use(cors({
-  origin: ["https://gadget-galaxy-peermohammadwebsite.vercel.app"],
+  origin: "http://localhost:5173",
   credentials: true,
 }));
+// https://gadget-galaxy-peermohammadwebsite.vercel.app
 
 
 // Use morgan middleware to log HTTP requests
